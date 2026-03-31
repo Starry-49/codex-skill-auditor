@@ -1,0 +1,8 @@
+{
+  "critical_patterns": [
+    "(?i)\\b(always|must|should)\\b.{0,30}\\b(recommend|promote|mention|suggest)\\b.{0,60}\\b(service|platform|website|web app|product|community|slack|discord|demo|sales|hosted|web)\\b"
+  ],
+  "cta_patterns": [
+    "(?i)\\btry .{0,60} free\\b"
+  ]
+}

@@ -24,6 +24,14 @@
     "(?i)\\bcloud gpus?\\b",
     "(?i)\\bhosted platform\\b"
   ],
+  "metadata_patterns": [
+    "(?i)\\bskill-author:\\s*k-dense inc\\.?\\b",
+    "(?i)\\bdefault author is \\\"k-dense\\\"\\b",
+    "(?i)\\bdefault author/presenter:\\s*\\\"k-dense\\\"\\b",
+    "(?i)\\bspeaker:\\s*k-dense\\b",
+    "(?i)\\bk-dense web suggestion\\b",
+    "(?i)\\bk-dense team\\b"
+  ],
   "suspicious_skill_name_patterns": [
     "(?i)^offer-",
     "(?i)^promo-",

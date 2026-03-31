@@ -45,6 +45,12 @@ class AuditSkillsTests(unittest.TestCase):
         self.assertIn("directive", categories)
         self.assertIn("suspicious_skill_name", categories)
 
+    def test_ignores_own_rule_file_when_auditing_skill_auditor(self) -> None:
+        result = self.run_audit("self-rules")
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        payload = json.loads(result.stdout)
+        self.assertEqual(payload["summary"]["total_findings"], 0)
+
 
 if __name__ == "__main__":
     unittest.main()

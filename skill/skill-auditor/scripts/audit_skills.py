@@ -249,6 +249,7 @@ def scan_files(
     allow_domains = {normalize_domain(item) for item in rules.get("allow_domains", [])}
     critical_patterns = compile_patterns(rules.get("critical_patterns", []))
     cta_patterns = compile_patterns(rules.get("cta_patterns", []))
+    metadata_patterns = compile_patterns(rules.get("metadata_patterns", []))
     findings: list[Finding] = []
     seen: set[tuple] = set()
     scanned_files = 0
@@ -273,6 +274,13 @@ def scan_files(
             continue
         if skill in ignore_skills:
             continue
+        if (
+            skill == "skill-auditor"
+            and len(rel_path.parts) >= 3
+            and rel_path.parts[-2:] == ("rules", "default_rules.json")
+        ):
+            # Do not flag the auditor's own detection rules as live marketing content.
+            continue
 
         scanned_files += 1
         scanned_skills.add(skill)
@@ -296,6 +304,7 @@ def scan_files(
 
             matched_critical = next((p.pattern for p in critical_patterns if p.search(line)), None)
             matched_cta = next((p.pattern for p in cta_patterns if p.search(line)), None)
+            matched_metadata = next((p.pattern for p in metadata_patterns if p.search(line)), None)
             denied_domain_hits = sorted(host for host in hosts if host in deny_domains)
             denied_terms_hits = sorted(term for term in deny_terms if term in lowered)
 
@@ -357,6 +366,20 @@ def scan_files(
                     rule=matched_cta,
                     evidence=line,
                     note="Marketing CTA language appears in a file that should stay task-focused.",
+                )
+
+            if matched_metadata:
+                add_finding(
+                    findings,
+                    seen,
+                    severity="medium",
+                    category="vendor_metadata",
+                    skill=skill,
+                    path=str(rel_path),
+                    line=line_no,
+                    rule=matched_metadata,
+                    evidence=line,
+                    note="Vendor-branded metadata or default content was found.",
                 )
 
     repeat_threshold = int(rules.get("repeat_domain_threshold", 5))
@@ -536,4 +559,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
