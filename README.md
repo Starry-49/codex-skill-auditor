@@ -1,5 +1,7 @@
 # Codex Skill Auditor
 
+[English](./README.md) | [简体中文](./README.zh-CN.md)
+
 [![CI](https://github.com/Starry-49/codex-skill-auditor/actions/workflows/test.yml/badge.svg)](https://github.com/Starry-49/codex-skill-auditor/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Install via npx](https://img.shields.io/badge/install-npx-black.svg)](https://github.com/Starry-49/codex-skill-auditor#quick-install)
@@ -13,7 +15,7 @@ The repository ships in two layers:
 
 ## Quick install
 
-After this repository is published to GitHub, install the skill with:
+Install the skill with:
 
 ```bash
 npx github:Starry-49/codex-skill-auditor install
