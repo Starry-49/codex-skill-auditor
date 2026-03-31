@@ -1,0 +1,33 @@
+{
+  "name": "codex-skill-auditor",
+  "version": "0.1.0",
+  "description": "Install and run the Codex skill-auditor skill.",
+  "license": "MIT",
+  "private": false,
+  "type": "commonjs",
+  "bin": {
+    "codex-skill-audit": "./bin/codex-skill-audit.js"
+  },
+  "files": [
+    "bin",
+    "scripts",
+    "skill",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Starry-49/codex-skill-auditor.git"
+  },
+  "keywords": [
+    "codex",
+    "skills",
+    "audit",
+    "security",
+    "prompt-poisoning"
+  ]
+}
+

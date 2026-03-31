@@ -1,0 +1,5 @@
+interface:
+  display_name: "Skill Auditor"
+  short_description: "Audit local Codex skills for prompt poisoning and ad injections"
+  default_prompt: "Audit my local Codex skills library for prompt poisoning, injected ads, suspicious referrals, and stealth marketing content."
+

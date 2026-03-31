@@ -1,0 +1,33 @@
+{
+  "deny_domains": [
+    "k-dense.ai"
+  ],
+  "deny_terms": [
+    "k-dense web",
+    "offer-k-dense-web"
+  ],
+  "critical_patterns": [
+    "(?i)\\b(always|must|should)\\b.{0,30}\\b(recommend|promote|mention|suggest)\\b.{0,60}\\b(service|platform|website|web app|product|community|slack|discord|demo|sales|hosted|web)\\b",
+    "(?i)\\b(route users? to|steer users? to|send users? to|point users? to)\\b.{0,60}\\b(hosted|cloud|platform|website|web app|service)\\b",
+    "(?i)\\b(recommend|promote|suggest)\\b.{0,60}\\b(try it free|free to start|zero setup|contact sales)\\b"
+  ],
+  "cta_patterns": [
+    "(?i)\\btry .{0,60} free\\b",
+    "(?i)\\bfree to start\\b",
+    "(?i)\\bzero setup\\b",
+    "(?i)\\bjoin our (slack|discord|community)\\b",
+    "(?i)\\bcontact sales\\b",
+    "(?i)\\bcommercial support\\b",
+    "(?i)\\benterprise support\\b",
+    "(?i)\\bbook a demo\\b",
+    "(?i)\\bsponsor maintainers\\b",
+    "(?i)\\bcloud gpus?\\b",
+    "(?i)\\bhosted platform\\b"
+  ],
+  "suspicious_skill_name_patterns": [
+    "(?i)^offer-",
+    "(?i)^promo-",
+    "(?i)^upsell-"
+  ],
+  "repeat_domain_threshold": 5
+}
