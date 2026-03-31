@@ -1,24 +1,24 @@
-# Codex Skill Auditor
+# Skill-Auditor
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-[![CI](https://github.com/Starry-49/codex-skill-auditor/actions/workflows/test.yml/badge.svg)](https://github.com/Starry-49/codex-skill-auditor/actions/workflows/test.yml)
+[![CI](https://github.com/Starry-49/Skill-Auditor/actions/workflows/test.yml/badge.svg)](https://github.com/Starry-49/Skill-Auditor/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Install via npx](https://img.shields.io/badge/install-npx-black.svg)](https://github.com/Starry-49/codex-skill-auditor#quick-install)
+[![Install via npx](https://img.shields.io/badge/install-npx-black.svg)](https://github.com/Starry-49/Skill-Auditor#quick-install)
 
-`skill-auditor` 是一个 Codex skill，加上一层轻量 CLI 安装器，用来审查 `~/.codex/skills` 中是否存在 prompt poisoning、广告式 call-to-action、嵌入式托管平台导流，以及 `offer-*` 这类可疑 skill 命名。
+`Skill-Auditor` 当前是以 Codex skill 加轻量 CLI 安装器的形式交付，用来审查本地 skill 库中是否存在 prompt poisoning、广告式 call-to-action、嵌入式托管平台导流，以及 `offer-*` 这类可疑 skill 命名。
 
 这个仓库分成两层：
 
 - `skill/skill-auditor`：实际的 Codex skill，内含规则和 Python 审查引擎
-- `bin/codex-skill-audit.js`：`npx` 入口，用于安装 skill 或直接运行审查
+- `bin/codex-skill-audit.js`：CLI 入口，对外暴露为 `skill-auditor`，同时保留旧别名 `codex-skill-audit`
 
 ## 快速安装
 
 直接执行：
 
 ```bash
-npx github:Starry-49/codex-skill-auditor install
+npx github:Starry-49/Skill-Auditor install
 ```
 
 这会把 `skill-auditor` 复制到 `$CODEX_HOME/skills/skill-auditor` 或 `~/.codex/skills/skill-auditor`。
@@ -30,7 +30,7 @@ npx github:Starry-49/codex-skill-auditor install
 可以直接通过 `npx` 运行内置审查器：
 
 ```bash
-npx github:Starry-49/codex-skill-auditor audit --format markdown --fail-on high
+npx github:Starry-49/Skill-Auditor audit --format markdown --fail-on high
 ```
 
 或者在安装之后执行：
@@ -66,6 +66,8 @@ GitHub Actions 还会在每次 push 时跑一条完整的 CLI smoke path：
 - 安装后的 CLI 对 poisoned fixture 的失败路径
 
 `npx` 入口在目标机器上仍然需要 Node。这个开发环境本地没有 `node` / `npm`，所以 CLI 入口是按规范写好并交给 GitHub Actions 验证的，而不是在这里直接执行。
+
+推荐使用的新 CLI 名称是 `skill-auditor`。旧的 `codex-skill-audit` 仍然保留，用于兼容已存在的命令引用。
 
 ## 仓库结构
 

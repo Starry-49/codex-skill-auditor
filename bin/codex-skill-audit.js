@@ -43,15 +43,18 @@ function runPython(scriptPath, args) {
 
 function printHelp() {
   console.log(`Usage:
-  codex-skill-audit install [--dest-root PATH] [--name NAME] [--force]
-  codex-skill-audit audit [audit-script-args...]
-  codex-skill-audit where
-  codex-skill-audit help
+  skill-auditor install [--dest-root PATH] [--name NAME] [--force]
+  skill-auditor audit [audit-script-args...]
+  skill-auditor where
+  skill-auditor help
 
 Examples:
-  codex-skill-audit install
-  codex-skill-audit audit --format markdown --fail-on high
-  codex-skill-audit where`);
+  skill-auditor install
+  skill-auditor audit --format markdown --fail-on high
+  skill-auditor where
+
+Legacy alias:
+  codex-skill-audit ...`);
 }
 
 const argv = process.argv.slice(2);
@@ -83,4 +86,3 @@ if (command === 'audit') {
 console.error(`Unknown command: ${command}`);
 printHelp();
 process.exit(1);
-

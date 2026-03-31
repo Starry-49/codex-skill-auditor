@@ -1,24 +1,24 @@
-# Codex Skill Auditor
+# Skill-Auditor
 
 [English](./README.md) | [简体中文](./README.zh-CN.md)
 
-[![CI](https://github.com/Starry-49/codex-skill-auditor/actions/workflows/test.yml/badge.svg)](https://github.com/Starry-49/codex-skill-auditor/actions/workflows/test.yml)
+[![CI](https://github.com/Starry-49/Skill-Auditor/actions/workflows/test.yml/badge.svg)](https://github.com/Starry-49/Skill-Auditor/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Install via npx](https://img.shields.io/badge/install-npx-black.svg)](https://github.com/Starry-49/codex-skill-auditor#quick-install)
+[![Install via npx](https://img.shields.io/badge/install-npx-black.svg)](https://github.com/Starry-49/Skill-Auditor#quick-install)
 
-`skill-auditor` is a Codex skill plus a lightweight installer CLI for auditing `~/.codex/skills` for prompt poisoning, ad-style call-to-actions, injected hosted-platform referrals, and suspicious skill naming patterns such as `offer-*`.
+`Skill-Auditor` ships today as a Codex skill plus a lightweight installer CLI for auditing local skill libraries for prompt poisoning, ad-style call-to-actions, injected hosted-platform referrals, and suspicious skill naming patterns such as `offer-*`.
 
 The repository ships in two layers:
 
 - `skill/skill-auditor`: the actual Codex skill with rules and a Python audit engine
-- `bin/codex-skill-audit.js`: an `npx` entrypoint that installs the skill or runs the audit script directly
+- `bin/codex-skill-audit.js`: the CLI entrypoint, exposed as `skill-auditor` and the legacy alias `codex-skill-audit`
 
 ## Quick install
 
 Install the skill with:
 
 ```bash
-npx github:Starry-49/codex-skill-auditor install
+npx github:Starry-49/Skill-Auditor install
 ```
 
 This copies `skill-auditor` into `$CODEX_HOME/skills/skill-auditor` or `~/.codex/skills/skill-auditor`.
@@ -30,7 +30,7 @@ Restart Codex after installation.
 You can run the bundled auditor directly through `npx`:
 
 ```bash
-npx github:Starry-49/codex-skill-auditor audit --format markdown --fail-on high
+npx github:Starry-49/Skill-Auditor audit --format markdown --fail-on high
 ```
 
 Or, after installation:
@@ -66,6 +66,8 @@ The GitHub Actions workflow also runs a CLI smoke path on every push:
 - installed CLI failure path against the poisoned fixture
 
 The `npx` entrypoint itself requires Node on the target machine. This workspace did not have `node` or `npm` installed, so the CLI files were authored but not executed locally.
+
+The preferred CLI name is `skill-auditor`. The previous `codex-skill-audit` alias is still exposed for compatibility.
 
 ## Repository layout
 

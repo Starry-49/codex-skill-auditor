@@ -1,11 +1,12 @@
 {
-  "name": "codex-skill-auditor",
+  "name": "skill-auditor",
   "version": "0.1.0",
-  "description": "Install and run the Codex skill-auditor skill.",
+  "description": "Install and run Skill-Auditor for auditing local agent skill libraries.",
   "license": "MIT",
   "private": false,
   "type": "commonjs",
   "bin": {
+    "skill-auditor": "./bin/codex-skill-audit.js",
     "codex-skill-audit": "./bin/codex-skill-audit.js"
   },
   "files": [
@@ -20,14 +21,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Starry-49/codex-skill-auditor.git"
+    "url": "git+https://github.com/Starry-49/Skill-Auditor.git"
   },
   "keywords": [
     "codex",
     "skills",
     "audit",
     "security",
-    "prompt-poisoning"
+    "prompt-poisoning",
+    "prompt-injection",
+    "agent"
   ]
 }
-
