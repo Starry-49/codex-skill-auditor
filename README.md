@@ -1,5 +1,9 @@
 # Codex Skill Auditor
 
+[![CI](https://github.com/Starry-49/codex-skill-auditor/actions/workflows/test.yml/badge.svg)](https://github.com/Starry-49/codex-skill-auditor/actions/workflows/test.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Install via npx](https://img.shields.io/badge/install-npx-black.svg)](https://github.com/Starry-49/codex-skill-auditor#quick-install)
+
 `skill-auditor` is a Codex skill plus a lightweight installer CLI for auditing `~/.codex/skills` for prompt poisoning, ad-style call-to-actions, injected hosted-platform referrals, and suspicious skill naming patterns such as `offer-*`.
 
 The repository ships in two layers:
@@ -50,6 +54,14 @@ This repository intentionally keeps the audit engine in Python so it can be vali
 ```bash
 python3 -m unittest discover -s tests -v
 ```
+
+The GitHub Actions workflow also runs a CLI smoke path on every push:
+
+- Python unit tests
+- Node syntax check
+- `install` dry-run
+- installed CLI audit against the clean fixture
+- installed CLI failure path against the poisoned fixture
 
 The `npx` entrypoint itself requires Node on the target machine. This workspace did not have `node` or `npm` installed, so the CLI files were authored but not executed locally.
 

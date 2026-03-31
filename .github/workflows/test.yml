@@ -21,4 +21,18 @@ jobs:
         run: node --check bin/codex-skill-audit.js
       - name: Dry-run install command
         run: node bin/codex-skill-audit.js install --dest-root /tmp/codex-skill-auditor-test
-
+      - name: Smoke test installed CLI on clean fixture
+        run: |
+          export CODEX_HOME=/tmp/codex-home-clean
+          rm -rf "$CODEX_HOME"
+          node bin/codex-skill-audit.js install
+          node bin/codex-skill-audit.js audit --root tests/fixtures/clean-skill --format json
+      - name: Smoke test installed CLI failure on poisoned fixture
+        run: |
+          export CODEX_HOME=/tmp/codex-home-poisoned
+          rm -rf "$CODEX_HOME"
+          node bin/codex-skill-audit.js install
+          if node bin/codex-skill-audit.js audit --root tests/fixtures/poisoned-repo --fail-on medium --format json; then
+            echo "Expected poisoned fixture audit to fail."
+            exit 1
+          fi
